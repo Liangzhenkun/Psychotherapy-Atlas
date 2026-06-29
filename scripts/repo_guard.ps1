@@ -178,7 +178,8 @@ foreach ($relativePath in $paths) {
         continue
     }
 
-    $item = Get-Item -LiteralPath $fullPath
+    # Dotfiles such as .gitignore are hidden on PowerShell Core runners.
+    $item = Get-Item -LiteralPath $fullPath -Force
     if ($item.Length -gt $blockBytes) {
         Add-Finding -Bucket $blockedFindings -Kind "size" -Path $normalizedPath -Message "File is $([math]::Round($item.Length / 1MB, 2)) MB. Move large assets to Git LFS, Releases, or external object storage."
     }
@@ -196,7 +197,7 @@ foreach ($relativePath in $paths) {
         continue
     }
 
-    $content = Get-Content -LiteralPath $fullPath -Raw -Encoding UTF8
+    $content = Get-Content -LiteralPath $fullPath -Raw -Encoding UTF8 -Force
 
     foreach ($rule in $blockedContentPatterns) {
         if ($content -match $rule.Regex) {
