@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>心理治疗流派研究包</title>
+  <style>
+    :root {
+      --bg: #f4efe5;
+      --paper: rgba(255, 252, 246, 0.92);
+      --ink: #1c2a28;
+      --muted: #53625f;
+      --line: rgba(28, 42, 40, 0.14);
+      --accent: #7d4f34;
+      --accent-2: #21463d;
+      --shadow: 0 24px 60px rgba(39, 32, 21, 0.12);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(125, 79, 52, 0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(33, 70, 61, 0.12), transparent 25%),
+        linear-gradient(180deg, #efe7d8 0%, var(--bg) 42%, #efe8dc 100%);
+      font-family: "Palatino Linotype", "Book Antiqua", Georgia, "Noto Serif SC", serif;
+      line-height: 1.72;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 32px auto 56px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 48px 42px;
+      background: linear-gradient(135deg, rgba(255, 251, 244, 0.95), rgba(244, 236, 223, 0.90));
+      border: 1px solid rgba(125, 79, 52, 0.18);
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -70px -80px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(33, 70, 61, 0.16), transparent 65%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(33, 70, 61, 0.10);
+      color: var(--accent-2);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 12ch;
+      font-size: clamp(38px, 6vw, 68px);
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3vw, 38px);
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    .hero p {
+      max-width: 64ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .meta span {
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.58);
+      border-radius: 999px;
+      border: 1px solid rgba(33, 70, 61, 0.10);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    .toc, .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .toc {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      padding: 24px 22px;
+    }
+
+    .toc h2 {
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .toc li + li {
+      margin-top: 10px;
+    }
+
+    .toc a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .content {
+      display: grid;
+      gap: 20px;
+    }
+
+    .panel {
+      padding: 30px 30px 26px;
+    }
+
+    .lede {
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(28, 42, 40, 0.10);
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(125, 79, 52, 0.10);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: 15px;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    th, td {
+      padding: 14px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--accent-2);
+      background: rgba(33, 70, 61, 0.08);
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    blockquote {
+      margin: 18px 0 0;
+      padding: 16px 18px;
+      border-left: 4px solid rgba(125, 79, 52, 0.35);
+      background: rgba(125, 79, 52, 0.05);
+      color: var(--muted);
+    }
+
+    pre {
+      margin: 14px 0 0;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 18px;
+      background: #192321;
+      color: #edf2ee;
+      font-size: 14px;
+    }
+
+    .columns {
+      columns: 2 280px;
+      column-gap: 22px;
+      margin-top: 18px;
+    }
+
+    .columns p, .columns ul {
+      break-inside: avoid;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .work {
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(244, 239, 229, 0.90));
+      border: 1px solid rgba(28, 42, 40, 0.10);
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .grid,
+      .works {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(calc(100% - 20px), var(--max));
+        margin-top: 20px;
+      }
+
+      .hero,
+      .panel,
+      .toc {
+        padding: 22px;
+      }
+
+      h1 {
+        max-width: none;
+      }
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      td {
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow">Research Pack / Narrative Reference</div>
+      <h1>心理治疗流派研究包</h1>
+      <p>把综述文献、流派技术、临床适应症、生活表现与叙事创作放进同一张地图里，方便系统学习，也方便你未来转成游戏、电影或作品集素材。</p>
+      <div class="meta">
+        <span>编写日期：2026-06-24</span>
+        <span>主题：心理治疗流派的实操技术与适应症</span>
+        <span>用途：学习 / 创作 / 作品集储备</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <aside class="toc">
+        <h2>目录</h2>
+        <ol>
+          <li><a href="#core">核心综述</a></li>
+          <li><a href="#map">流派-技术-适应症</a></li>
+          <li><a href="#life">生活中的表现</a></li>
+          <li><a href="#search">高级检索式</a></li>
+          <li><a href="#craft">创作转译</a></li>
+          <li><a href="#works">艺术作品参考</a></li>
+          <li><a href="#ideas">原创故事钩子</a></li>
+          <li><a href="#sources">来源</a></li>
+        </ol>
+      </aside>
+
+      <main class="content">
+        <section class="panel" id="core">
+          <h2>核心综述</h2>
+          <p class="lede">先读这 5 篇，足够搭起一张稳定的中高阶知识骨架。推荐等级是我综合近年元分析、NICE 2022 与 APA 指南后做的工作性判断，不等于单一指南原文等级。</p>
+          <div class="grid">
+            <article class="card">
+              <div class="tag">Umbrella Review</div>
+              <h3>成人精神障碍中心理治疗与药物治疗的疗效</h3>
+              <p><strong>原题：</strong><a href="https://doi.org/10.1017/S0033291721002965">The efficacy of psychotherapies and pharmacotherapies for mental disorders in adults</a></p>
+              <p><strong>作者 / 年份：</strong>Leichsenring, Steinert, Rabung, Ioannidis 等，2022</p>
+              <p><strong>价值：</strong>给出跨流派全景。CBT 证据面最广；IPT 在抑郁领域很强；动力学治疗在抑郁、焦虑和人格相关问题上有中等到良好支持；家庭系统干预在特定障碍上优势明显。</p>
+            </article>
+            <article class="card">
+              <div class="tag">Meta-Analyses</div>
+              <h3>CBT 在精神障碍治疗中的统一元分析</h3>
+              <p><strong>原题：</strong><a href="https://pubmed.ncbi.nlm.nih.gov/40238104/">Cognitive behavior therapy in the treatment of mental disorders</a></p>
+              <p><strong>作者 / 年份：</strong>Cuijpers, Miguel, Ciharova 等，2025</p>
+              <p><strong>价值：</strong>适合用来建立 CBT 全景。对抑郁、焦虑谱系、创伤相关问题、OCD 等有稳定疗效；典型技术是认知重构、暴露、行为激活、行为实验。</p>
+            </article>
+            <article class="card">
+              <div class="tag">Comprehensive Meta-Analysis</div>
+              <h3>IPT 用于精神健康问题的综合元分析</h3>
+              <p><strong>原题：</strong><a href="https://research.vu.nl/en/publications/interpersonal-psychotherapy-for-mental-health-problems-a-comprehe">Interpersonal Psychotherapy for Mental Health Problems</a></p>
+              <p><strong>作者 / 年份：</strong>Cuijpers, Donker, Weissman, Ravitz, Cristea，2016</p>
+              <p><strong>价值：</strong>IPT 对抑郁尤其是成人和围产期抑郁证据强；适合症状与分手、迁移、丧亲、婚育、照护压力等关系事件高度同步的人群。</p>
+            </article>
+            <article class="card">
+              <div class="tag">Meta-Analysis</div>
+              <h3>短程动力学治疗用于抑郁的疗效与调节因素</h3>
+              <p><strong>原题：</strong><a href="https://pubmed.ncbi.nlm.nih.gov/36958077/">Efficacy and moderators of short-term psychodynamic psychotherapy for depression</a></p>
+              <p><strong>作者 / 年份：</strong>Wienicke, Steinert, Guhn, Leichsenring 等，2023</p>
+              <p><strong>价值：</strong>说明动力学治疗对抑郁有效，尤其适合反复陷入同类关系脚本、情感受阻、防御明显的人。</p>
+            </article>
+            <article class="card">
+              <div class="tag">Network Meta-Analysis</div>
+              <h3>家庭干预用于精神分裂症复发预防</h3>
+              <p><strong>原题：</strong><a href="https://pubmed.ncbi.nlm.nih.gov/35462002/">Family interventions for relapse prevention in schizophrenia</a></p>
+              <p><strong>作者 / 年份：</strong>Rodolico, Bighelli, Avanzato 等，2022</p>
+              <p><strong>价值：</strong>把系统家庭取向的强项讲得很清楚：在精神病性障碍中，家庭心理教育、沟通训练和复发预警管理能切实降低复发风险。</p>
+            </article>
+            <article class="card">
+              <div class="tag">Optional Reading</div>
+              <h3>抑郁治疗的横向比较补充</h3>
+              <p><strong>推荐补读：</strong><a href="https://pubmed.ncbi.nlm.nih.gov/34135080/">Psychotherapies for depression: a network meta-analysis</a></p>
+              <p><strong>作用：</strong>帮助理解为什么不同流派在抑郁上经常疗效相近，但技术质地、适配人群和治疗感受差异很大。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <h2>流派-技术-适应症映射</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>治疗流派</th>
+                <th>核心实操技术 / 干预手段</th>
+                <th>最佳临床适应症</th>
+                <th>循证推荐等级</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>认知行为取向（CBT / DBT）</td>
+                <td>认知重构、行为激活、暴露、行为实验、问题解决、链式分析、情绪调节、痛苦耐受、正念、反向行动</td>
+                <td>抑郁、广泛性焦虑、惊恐、社交焦虑、OCD、PTSD；DBT 对边缘型人格障碍伴自伤/自杀风险尤佳</td>
+                <td>强烈推荐</td>
+              </tr>
+              <tr>
+                <td>心理动力学取向（PDT / STDP）</td>
+                <td>澄清、对抗、解释、防御分析、情感聚焦、关系主题识别、移情/反移情工作</td>
+                <td>抑郁、长期关系困扰、人格功能问题、反复重演式人际模式、部分心身问题</td>
+                <td>中度推荐</td>
+              </tr>
+              <tr>
+                <td>人际关系取向（IPT）</td>
+                <td>角色转变工作、哀伤工作、人际争端分析、沟通分析、社会支持重建、情感命名</td>
+                <td>成人抑郁、围产期/产后抑郁、因关系事件引发的情绪障碍；部分饮食与焦虑问题</td>
+                <td>强烈推荐</td>
+              </tr>
+              <tr>
+                <td>系统家庭治疗取向</td>
+                <td>家谱图、循环提问、重构/再框架、联盟与界限调整、现场互动演练、家庭心理教育、沟通与问题解决训练</td>
+                <td>精神分裂症复发预防、青少年进食障碍、外化问题、家庭冲突高度卷入个案、部分儿童青少年 OCD / 物质使用问题</td>
+                <td>中度推荐</td>
+              </tr>
+            </tbody>
+          </table>
+          <blockquote>记忆法：CBT 改“理解与行为回路”，动力学改“重复命运脚本”，IPT 改“关系失衡后的适应”，系统治疗改“让症状持续存在的互动机器”。</blockquote>
+        </section>
+
+        <section class="panel" id="life">
+          <h2>生活中的表现</h2>
+          <div class="grid">
+            <article class="card">
+              <div class="tag">CBT / DBT</div>
+              <p>常见于自动化思维很强、灾难化预测频繁、通过回避维持症状的人。DBT 额外聚焦情绪海啸、冲动、自伤、事后羞耻的连锁结构。</p>
+            </article>
+            <article class="card">
+              <div class="tag">PDT / STDP</div>
+              <p>常见于“总爱上同一种人”“总在关键时刻退缩或攻击”“明明愤怒却只说没事”的个体。症状往往嵌在防御和关系重演里。</p>
+            </article>
+            <article class="card">
+              <div class="tag">IPT</div>
+              <p>常见于迁居、毕业、离婚、婚育、丧亲、照护压力之后显著恶化的情绪问题。其重点是修复当下关系功能，并处理关键人际事件带来的失衡。</p>
+            </article>
+            <article class="card">
+              <div class="tag">Systemic / Family</div>
+              <p>常见于“问题孩子”承受全家裂缝、一个成员一好转另一个成员就失控、复发与高批评高卷入氛围同步上升的家庭。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="search">
+          <h2>高级 Google Scholar 检索式</h2>
+          <h3>总体循证图谱</h3>
+          <pre>("psychotherapy" OR "psychological treatment") AND ("umbrella review" OR "meta-analysis" OR "network meta-analysis") AND ("mental disorders" OR depression OR anxiety) AND (indications OR moderators OR predictors)</pre>
+          <h3>CBT / DBT</h3>
+          <pre>("cognitive behavioral therapy" OR CBT OR "dialectical behavior therapy" OR DBT) AND ("cognitive restructuring" OR exposure OR "behavioral activation" OR "emotion regulation") AND (depression OR anxiety OR OCD OR PTSD OR "borderline personality disorder") AND ("systematic review" OR "meta-analysis")</pre>
+          <h3>心理动力学治疗</h3>
+          <pre>("psychodynamic therapy" OR "short-term psychodynamic psychotherapy" OR STPP OR PDT) AND (transference OR interpretation OR defense OR "affect focus") AND (depression OR anxiety OR personality) AND ("meta-analysis" OR "systematic review")</pre>
+          <h3>IPT</h3>
+          <pre>("interpersonal psychotherapy" OR IPT) AND ("role transition" OR grief OR "interpersonal disputes" OR "social support") AND (depression OR perinatal OR postpartum OR anxiety OR "eating disorder") AND ("meta-analysis" OR "systematic review")</pre>
+          <h3>系统 / 家庭治疗</h3>
+          <pre>("family therapy" OR "systemic therapy" OR "family intervention" OR "family psychoeducation") AND (schizophrenia OR "eating disorders" OR adolescents OR OCD OR substance) AND ("systematic review" OR "meta-analysis" OR "network meta-analysis")</pre>
+        </section>
+
+        <section class="panel" id="craft">
+          <h2>创作转译</h2>
+          <p class="lede">把心理治疗看成四种不同的人物命运分析法，会比把它写成“角色去看咨询师”的桥段更有用。</p>
+          <table>
+            <thead>
+              <tr>
+                <th>流派</th>
+                <th>叙事镜头</th>
+                <th>适合塑造的冲突</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CBT / DBT</td>
+                <td>错误预测如何一步步变成现实；情绪如何裹挟行为</td>
+                <td>羞耻、恐惧、回避、冲动、自毁、创伤后回缩</td>
+              </tr>
+              <tr>
+                <td>动力学</td>
+                <td>过去未解冲突如何伪装成当下选择</td>
+                <td>重复性命运、依恋、欲望与防御、亲密失败</td>
+              </tr>
+              <tr>
+                <td>IPT</td>
+                <td>关系事件如何改变一个人的自我结构</td>
+                <td>丧失、迁移、婚育、代际角色转换、社会支持断裂</td>
+              </tr>
+              <tr>
+                <td>系统家庭</td>
+                <td>症状如何在群体中承担维稳功能</td>
+                <td>家族秘密、替罪羊、联盟、照护耗竭、复发循环</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="columns">
+            <p><strong>可反复使用的临床母题：</strong></p>
+            <ul>
+              <li>替罪羊角色：一个人替整个家庭承担无法言说的冲突。</li>
+              <li>重复性恋爱：主角总在不同阶段爱上“同一种人”。</li>
+              <li>症状作为忠诚：角色不愿痊愈，因为痊愈意味着背叛旧关系。</li>
+              <li>角色转变危机：毕业、继承、婚育、移民、失业后人格结构失衡。</li>
+              <li>高情绪表达家庭：所谓“为你好”恰恰成为复发触发器。</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel" id="works">
+          <h2>艺术作品参考</h2>
+          <div class="works">
+            <article class="work">
+              <h3>Good Will Hunting</h3>
+              <p><a href="https://en.wikipedia.org/wiki/Good_Will_Hunting">作品链接</a></p>
+              <p>适合观察依恋创伤、羞耻防御与矫正性关系经验。它说明有些人拒绝改变，是因为改变会触碰更深的丧失恐惧。</p>
+            </article>
+            <article class="work">
+              <h3>Ordinary People</h3>
+              <p><a href="https://en.wikipedia.org/wiki/Ordinary_People">作品链接</a></p>
+              <p>很适合从 IPT 与家庭系统视角看哀伤、沉默和症状外显。最“有病”的成员，往往只是最先说出全家真相的人。</p>
+            </article>
+            <article class="work">
+              <h3>The Sopranos</h3>
+              <p><a href="https://www.hbo.com/the-sopranos">作品链接</a></p>
+              <p>适合观察移情、防御、治疗关系中的操控与权力，也适合用来理解人格改变为什么会如此困难。</p>
+            </article>
+            <article class="work">
+              <h3>Disco Elysium</h3>
+              <p><a href="https://discoelysium.com/">作品链接</a></p>
+              <p>内在多声部、羞耻、自我叙事与行为选择回路的顶级参考。很适合转译成游戏机制。</p>
+            </article>
+            <article class="work">
+              <h3>Hellblade: Senua's Sacrifice</h3>
+              <p><a href="https://www.hellblade.com/">作品链接</a></p>
+              <p>适合观察精神病性体验的主观世界如何艺术化呈现。它更适合感知层面的体验参考，而非临床教育材料。</p>
+            </article>
+            <article class="work">
+              <h3>The Bell Jar</h3>
+              <p><a href="https://en.wikipedia.org/wiki/The_Bell_Jar">作品链接</a></p>
+              <p>适合用于抑郁、身份窒息与社会角色压力的写作参考。它能帮助你理解抑郁如何表现为世界失去进入感，而不只是悲伤加重。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="ideas">
+          <h2>原创故事钩子</h2>
+          <div class="grid">
+            <article class="card">
+              <div class="tag">Systemic</div>
+              <h3>症状是家族的保险丝</h3>
+              <p>某个反复惊恐与失语的女孩其实在替整个家族承担祖辈秘密。一旦她痊愈，所有隐藏联盟都会暴露，所以每个人都在无意识里阻止她变好。</p>
+            </article>
+            <article class="card">
+              <div class="tag">Psychodynamic</div>
+              <h3>主角爱上的永远是同一个人</h3>
+              <p>不同城市、不同年龄、不同职业阶段，她总爱上不可获得的人。剧情推进的关键不在恋爱本身，而在一个未被看见的早年关系脚本。</p>
+            </article>
+            <article class="card">
+              <div class="tag">CBT</div>
+              <h3>自动化思维篡改世界 UI</h3>
+              <p>叙事游戏中，灾难化思维会扭曲地图、表情和任务文本。玩家必须通过行为实验、证据记录和暴露来“校准现实”。</p>
+            </article>
+            <article class="card">
+              <div class="tag">IPT</div>
+              <h3>失去被需要的位置之后</h3>
+              <p>照护重病母亲多年的青年在母亲去世后迅速抑郁。故事同时涉及丧亲与角色丧失，核心是“一个人失去社会位置后如何重返人群”。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel footer" id="sources">
+          <h2>来源</h2>
+          <p>核心学术来源：</p>
+          <ul>
+            <li><a href="https://doi.org/10.1017/S0033291721002965">Leichsenring et al. 2022</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/40238104/">Cuijpers et al. 2025</a></li>
+            <li><a href="https://research.vu.nl/en/publications/interpersonal-psychotherapy-for-mental-health-problems-a-comprehe">Cuijpers et al. 2016</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/36958077/">Wienicke et al. 2023</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/35462002/">Rodolico et al. 2022</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/34135080/">Cuijpers et al. 2021</a></li>
+          </ul>
+          <p>指南与补充：</p>
+          <ul>
+            <li><a href="https://www.nice.org.uk/guidance/ng222">NICE NG222, 2022</a></li>
+            <li><a href="https://www.apa.org/depression-guideline">APA Depression Guideline</a></li>
+            <li><a href="https://psychiatryonline.org/doi/10.1176/appi.psychotherapy.20230035">Psychotherapies at a Glance</a></li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/20141265/">Shedler 2010</a></li>
+            <li><a href="https://behavioraltech.org/resources/faqs/dialectical-behavior-therapy-dbt/">Behavioral Tech DBT FAQ</a></li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

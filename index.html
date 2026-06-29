@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Psychotherapy Atlas</title>
+  <meta name="description" content="A bilingual atlas of psychotherapy approaches, techniques, indications, evidence, and narrative translation.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero" id="top">
+      <div class="hero-topline">
+        <span class="hero-kicker" data-bind="hero.kicker"></span>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button class="lang-button is-active" type="button" data-lang="zh">中文</button>
+          <button class="lang-button" type="button" data-lang="en">EN</button>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <h1 data-bind="hero.title"></h1>
+        <p class="hero-subtitle" data-bind="hero.subtitle"></p>
+      </div>
+      <div class="hero-meta" id="hero-meta"></div>
+      <div class="hero-links" id="hero-links"></div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar panel">
+        <h2 data-bind="toc.title"></h2>
+        <nav aria-label="Table of contents">
+          <ol id="toc-list"></ol>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section class="panel" id="overview">
+          <div class="section-heading">
+            <h2 data-bind="overview.title"></h2>
+            <p class="section-lede" data-bind="overview.lede"></p>
+          </div>
+          <div class="pill-grid" id="overview-pill-grid"></div>
+          <div class="note-block" data-bind="overview.note"></div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-heading">
+            <h2 data-bind="core.title"></h2>
+            <p class="section-lede" data-bind="core.lede"></p>
+          </div>
+          <div class="card-grid" id="core-card-grid"></div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-heading">
+            <h2 data-bind="map.title"></h2>
+            <p class="section-lede" data-bind="map.lede"></p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead id="map-head"></thead>
+              <tbody id="map-body"></tbody>
+            </table>
+          </div>
+          <div class="note-block" data-bind="map.note"></div>
+        </section>
+
+        <section class="panel" id="life">
+          <div class="section-heading">
+            <h2 data-bind="life.title"></h2>
+            <p class="section-lede" data-bind="life.lede"></p>
+          </div>
+          <div class="card-grid" id="life-card-grid"></div>
+        </section>
+
+        <section class="panel" id="search">
+          <div class="section-heading">
+            <h2 data-bind="search.title"></h2>
+            <p class="section-lede" data-bind="search.lede"></p>
+          </div>
+          <div class="query-grid" id="query-grid"></div>
+        </section>
+
+        <section class="panel" id="craft">
+          <div class="section-heading">
+            <h2 data-bind="craft.title"></h2>
+            <p class="section-lede" data-bind="craft.lede"></p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead id="craft-head"></thead>
+              <tbody id="craft-body"></tbody>
+            </table>
+          </div>
+          <div class="columns-block">
+            <h3 data-bind="craft.themesTitle"></h3>
+            <ul id="craft-themes"></ul>
+          </div>
+        </section>
+
+        <section class="panel" id="works">
+          <div class="section-heading">
+            <h2 data-bind="works.title"></h2>
+            <p class="section-lede" data-bind="works.lede"></p>
+          </div>
+          <div class="work-grid" id="work-grid"></div>
+        </section>
+
+        <section class="panel" id="ideas">
+          <div class="section-heading">
+            <h2 data-bind="ideas.title"></h2>
+            <p class="section-lede" data-bind="ideas.lede"></p>
+          </div>
+          <div class="card-grid" id="idea-grid"></div>
+        </section>
+
+        <section class="panel" id="archive">
+          <div class="section-heading">
+            <h2 data-bind="archive.title"></h2>
+            <p class="section-lede" data-bind="archive.lede"></p>
+          </div>
+          <div class="archive-grid" id="archive-grid"></div>
+        </section>
+
+        <section class="panel footer-panel" id="sources">
+          <div class="section-heading">
+            <h2 data-bind="sources.title"></h2>
+            <p class="section-lede" data-bind="sources.lede"></p>
+          </div>
+          <div class="source-columns">
+            <div>
+              <h3 data-bind="sources.coreTitle"></h3>
+              <ul id="source-core"></ul>
+            </div>
+            <div>
+              <h3 data-bind="sources.extraTitle"></h3>
+              <ul id="source-extra"></ul>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
