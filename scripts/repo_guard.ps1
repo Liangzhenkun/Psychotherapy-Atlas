@@ -51,7 +51,7 @@ function Test-IsBinary {
 }
 
 function Get-EffectiveGitEmail {
-    $localEmail = (git config --get user.email 2>$null)
+    $localEmail = (git config --local --get user.email 2>$null)
     if (-not [string]::IsNullOrWhiteSpace($localEmail)) {
         return @{
             Scope = "repository"
