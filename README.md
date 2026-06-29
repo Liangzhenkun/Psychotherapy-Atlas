@@ -21,6 +21,7 @@ A bilingual research-and-creation project on psychotherapy approaches, technique
 - Bilingual archive table: [reference_archive/reference_table_bilingual.md](reference_archive/reference_table_bilingual.md)
 - Bilingual archive CSV: [reference_archive/reference_index_bilingual.csv](reference_archive/reference_index_bilingual.csv)
 - Git safety guide: [GIT_SAFETY.md](GIT_SAFETY.md)
+- Windows Git bootstrap: [git-bootstrap-windows.bat](git-bootstrap-windows.bat)
 
 ## Privacy and publishing notes
 

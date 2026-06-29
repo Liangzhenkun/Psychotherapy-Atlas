@@ -31,6 +31,22 @@ If you do not have `pwsh`, use:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\install_git_hooks.ps1
 ```
 
+## New-computer setup
+
+For a fresh Windows machine, you can run:
+
+```bat
+git-bootstrap-windows.bat
+```
+
+It sets:
+
+- global `user.name`
+- global `user.email`
+- global `init.defaultBranch=main`
+
+If you run it from this repository, it also installs the local hooks automatically.
+
 ## How to run the scan manually
 
 Check only staged files:
