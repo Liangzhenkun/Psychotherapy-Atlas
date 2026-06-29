@@ -1,0 +1,4 @@
+# Add only narrow, reviewed allowlist entries here when a path is intentionally public.
+# Examples:
+# reference_archive/_downloads_pmc_pdfs/example.pdf
+# docs/public-demo-key.pem
